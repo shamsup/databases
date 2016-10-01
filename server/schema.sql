@@ -17,12 +17,13 @@ create table users (
 create table rooms (
   id int not null auto_increment,
   roomname VARCHAR(20) not null,
-  primary key (id)
+  primary key (id),
+  unique (roomname)
 );
 
 CREATE TABLE messages (
   id int not null auto_increment,
-  content VARCHAR(200) not null,
+  message VARCHAR(200) not null,
   user_id int not null,
   room_id int not null,
   created datetime not null default current_timestamp,

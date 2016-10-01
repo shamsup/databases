@@ -7,15 +7,22 @@ var mysql = require('mysql');
 var connection = mysql.createConnection({
   user: 'root',
   password: '',
-  database: 'chat'
+  database: 'chat_test'
 });
 
 connection.queryPromise = function queryPromise (query, replacements) {
   return new Promise(function (resolve, reject) {
-    connection.query(query, function (err, rows, fields) {
-      if (err) { return reject(err); }
-      resolve({ fields: fields, rows: rows });
-    });
+    if (replacements) {
+      connection.query(query, replacements, function (err, rows, fields) {
+        if (err) { return reject(err); }
+        resolve({ fields: fields, result: rows });
+      });
+    } else {
+      connection.query(query, function (err, rows, fields) {
+        if (err) { return reject(err); }
+        resolve({ fields: fields, result: rows });
+      });
+    }
   });
 };
 

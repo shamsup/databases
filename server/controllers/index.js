@@ -12,8 +12,10 @@ module.exports = {
       });
     }, // a function which handles a get request for all messages
     post: function (req, res) {
-      models.messages.post(req.body.message)
+      console.log('Post body: ', req.body);
+      models.messages.post(req.body)
       .then(function(messageId) {
+        console.log('Should be an id: ', messageId);
         res.status(201).json({ id: messageId });
       })
       .catch(function() {
@@ -40,9 +42,9 @@ module.exports = {
       })
       .catch(function(err) {
         models.users.post(username)
-        .then(function(user) {
-          if (user) {
-            res.status(201).json(user);
+        .then(function(userId) {
+          if (userId) {
+            res.status(201).json({id: userId});
           }
         })
         .catch(function(err) {
