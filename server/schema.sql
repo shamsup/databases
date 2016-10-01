@@ -10,7 +10,8 @@ DROP TABLE IF EXISTS rooms;
 create table users (
   id int not null auto_increment,
   username VARCHAR(25) not null,
-  primary key (id)
+  primary key (id),
+  unique (username)
 );
 
 create table rooms (
@@ -24,6 +25,7 @@ CREATE TABLE messages (
   content VARCHAR(200) not null,
   user_id int not null,
   room_id int not null,
+  created datetime not null default current_timestamp,
   primary key (id),
   foreign key (user_id) references users (id),
   foreign key (room_id) references rooms (id)
