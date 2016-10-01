@@ -1,0 +1,10 @@
+{
+  "name": "databases-orm",
+  "version": "0.0.0",
+  "main": "app.js",
+  "scripts": {
+    "clean": "rm -f ./app.js ./routes.js",
+    "prepare": "cp ../server/app.js ../server/routes.js .",
+    "start": "node ./app.js"
+  }
+}
