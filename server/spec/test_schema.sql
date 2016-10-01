@@ -1,6 +1,6 @@
-CREATE DATABASE IF NOT EXISTS chat;
+CREATE DATABASE IF NOT EXISTS chat_test;
 
-USE chat;
+USE chat_test;
 
 DROP TABLE IF EXISTS messages;
 DROP TABLE IF EXISTS following;
